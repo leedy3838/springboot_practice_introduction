@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-    MemberRepository memberRepository = new MemoryMemberRepository();
+    MemberRepository memberRepository;
+
+    MemberService(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     /**
      * 회원가입
@@ -39,7 +43,7 @@ public class MemberService {
      * id를 통한 회원 조회
      */
 
-    public Optional<Member> findOne(Member member){
-        return memberRepository.findById(member.getId());
+    public Optional<Member> findOne(Long memberId){
+        return memberRepository.findById(memberId);
     }
 }
