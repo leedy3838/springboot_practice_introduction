@@ -3,13 +3,17 @@ package hello.hello.spring.Service;
 import hello.hello.spring.Domain.Member;
 import hello.hello.spring.Repository.MemberRepository;
 import hello.hello.spring.Repository.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MemberService {
     MemberRepository memberRepository;
 
+    @Autowired
     MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }
