@@ -14,22 +14,22 @@ import javax.sql.DataSource;
 
 @Configuration
 public class SpringConfig {
-    private EntityManager em;
+    public final MemberRepository memberRepository;
 
     @Autowired
-    public SpringConfig(EntityManager em){
-        this.em = em;
+    public SpringConfig(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
     }
     @Bean
     MemberService memberService(){
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    MemberRepository memberRepository(){
+//    @Bean
+//    MemberRepository memberRepository(){
         //return new MemoryMemberRepository();
         //return new JdbcTemplateMemberRepository(dataSource);
 
-        return new JPAMemberRepository(em);
-    }
+//        return new JPAMemberRepository(em);
+//    }
 }
